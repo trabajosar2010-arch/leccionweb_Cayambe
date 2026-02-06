@@ -379,5 +379,79 @@
         <p style="margin-top: 15px; font-size: 0.9rem;"><i class="fas fa-info-circle"></i> Ministerio de Educación Ecuador | Datos actualizados 2024</p>
         <p style="margin-top: 10px; font-size: 0.9rem;">Fuentes: INEC, Ministerio de Educación, UNESCO</p>
     </footer>
+    <script>
+        // Añadir interactividad a los botones
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonText = this.textContent;
+                let mensaje = "";
+                
+                switch(buttonText) {
+                    case "Niveles Educativos":
+                        mensaje = "Mostrando información sobre los niveles del sistema educativo ecuatoriano: Inicial, Básica, Bachillerato y Superior.";
+                        break;
+                    case "Estadísticas":
+                        mensaje = "Accediendo a estadísticas actualizadas del sistema educativo: cobertura, rendimiento, inversión y proyecciones.";
+                        break;
+                    case "Recursos":
+                        mensaje = "Abriendo biblioteca de recursos educativos digitales para docentes y estudiantes.";
+                        break;
+                    case "Instituciones":
+                        mensaje = "Mostrando directorio de instituciones educativas públicas y privadas en Ecuador.";
+                        break;
+                    default:
+                        mensaje = "Función específica sería implementada según necesidad.";
+                }
+                
+                alert(mensaje);
+            });
+        });
+        
+        // Añadir efecto visual al cargar las imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageBoxes = document.querySelectorAll('.image-box');
+            imageBoxes.forEach((box, index) => {
+                // Retraso escalonado para animación
+                setTimeout(() => {
+                    box.style.opacity = '0';
+                    box.style.transform = 'translateY(20px)';
+                    box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        box.style.opacity = '1';
+                        box.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 200);
+            });
+            
+            // Animación para las estadísticas
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const finalValue = stat.textContent;
+                stat.textContent = '0';
+                
+                setTimeout(() => {
+                    let current = 0;
+                    const increment = parseInt(finalValue) / 30;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= parseInt(finalValue)) {
+                            stat.textContent = finalValue;
+                            clearInterval(timer);
+                        } else {
+                            if (finalValue.includes('%')) {
+                                stat.textContent = current.toFixed(1) + '%';
+                            } else if (finalValue.includes('/')) {
+                                const parts = finalValue.split('/');
+                                stat.textContent = (current / 10).toFixed(1) + '/' + parts[1];
+                            } else {
+                                stat.textContent = Math.floor(current);
+                            }
+                        }
+                    }, 50);
+                }, 1000);
+            });
+        });
+    </script>
 </body>
 </html>
