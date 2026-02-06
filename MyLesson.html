@@ -6,11 +6,13 @@
     <title>GLITCH CONGAIO - Página Web</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-                :root {
+    :root {
             --rojo: #e63946;
             --blanco: #f8f9fa;
             --gris-oscuro: #2d3748;
             --gris-claro: #e2e8f0;
+            --azul-ecuador: #0d4d9c;
+            --amarillo-ecuador: #ffd700;
         }
         
         * {
@@ -38,6 +40,17 @@
             margin-bottom: 40px;
             border-bottom: 3px solid var(--rojo);
             background: linear-gradient(to right, rgba(230, 57, 70, 0.1), rgba(230, 57, 70, 0.05));
+            position: relative;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--azul-ecuador), var(--amarillo-ecuador), var(--rojo));
         }
         
         h1 {
@@ -54,6 +67,14 @@
             color: var(--gris-oscuro);
             font-weight: 400;
             margin-bottom: 30px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--azul-ecuador);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-weight: 600;
         }
         
         .buttons-container {
@@ -85,6 +106,14 @@
             background-color: #c1121f;
             transform: translateY(-3px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-azul {
+            background-color: var(--azul-ecuador);
+        }
+        
+        .btn-azul:hover {
+            background-color: #0a3a7a;
         }
         
         .image-container {
@@ -119,12 +148,25 @@
             font-size: 1.2rem;
             padding: 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: var(--rojo);
         }
         
         .image-placeholder i {
             font-size: 3.5rem;
             color: var(--rojo);
             margin-bottom: 15px;
+            z-index: 1;
         }
         
         .image-info {
@@ -147,6 +189,42 @@
             font-size: 0.9rem;
             margin-top: 10px;
             font-weight: 600;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .marcador-azul {
+            background-color: var(--azul-ecuador);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background-color: rgba(13, 77, 156, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 2px solid rgba(13, 77, 156, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--azul-ecuador);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gris-oscuro);
+            font-weight: 600;
         }
         
         .footer {
@@ -167,6 +245,20 @@
         
         .footer a:hover {
             text-decoration: underline;
+        }
+        
+        .bandera-ecuador {
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(to bottom, 
+                var(--amarillo-ecuador) 33%, 
+                var(--azul-ecuador) 33%, 
+                var(--azul-ecuador) 66%, 
+                var(--rojo) 66%);
+            margin: 0 8px;
+            vertical-align: middle;
+            border-radius: 2px;
         }
         
         @media (max-width: 768px) {
@@ -193,9 +285,99 @@
                 padding: 15px;
                 border-width: 5px;
             }
+            
+            .stat-item {
+                min-width: 150px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+<body>
+    <header class="header">
+        <h1>EDUCACIÓN EN ECUADOR</h1>
+        <h2>Sistema Educativo, Estadísticas y Desafíos</h2>
+        <p class="subtitle">Análisis completo del sistema educativo ecuatoriano, sus logros, desafíos y proyecciones para el futuro <span class="bandera-ecuador"></span></p>
+    </header>
+    
+    <main>
+        <div class="buttons-container">
+            <button class="btn"><i class="fas fa-graduation-cap"></i> Niveles Educativos</button>
+            <button class="btn btn-azul"><i class="fas fa-chart-line"></i> Estadísticas</button>
+            <button class="btn"><i class="fas fa-book-open"></i> Recursos</button>
+            <button class="btn btn-azul"><i class="fas fa-university"></i> Instituciones</button>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">95.7%</div>
+                <div class="stat-label">Tasa de Matrícula</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">9.8/10</div>
+                <div class="stat-label">Calificación PISA</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">78%</div>
+                <div class="stat-label">Acceso Internet Escuelas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">14,280</div>
+                <div class="stat-label">Instituciones Educativas</div>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-box">
+                <div class="image-placeholder">
+                    <i class="fas fa-school"></i>
+                    <p>Sistema educativo ecuatoriano: estructura y cobertura</p>
+                    <span class="marcador">Marcador: Educación Básica</span>
+                </div>
+                <div class="image-info">
+                    <h3>Estructura del Sistema Educativo</h3>
+                    <p>Ecuador cuenta con educación inicial, básica, bachillerato y superior. La educación es obligatoria desde los 5 hasta los 18 años.</p>
+                    <p><strong>Cobertura:</strong> 95.7% en educación básica, 80.3% en bachillerato.</p>
+                </div>
+            </div>
+            
+            <div class="image-box">
+                <div class="image-placeholder">
+                    <i class="fas fa-laptop-code"></i>
+                    <p>Tecnología educativa en aulas ecuatorianas</p>
+                    <span class="marcador marcador-azul">Marcador: Innovación</span>
+                </div>
+                <div class="image-info">
+                    <h3>Tecnología en la Educación</h3>
+                    <p>Implementación del proyecto "Educación Digital" con entrega de tablets, computadoras y acceso a internet en instituciones públicas.</p>
+                    <p><strong>Meta 2025:</strong> 100% de escuelas con conectividad.</p>
+                </div>
+            </div>
+            
+            <div class="image-box">
+                <div class="image-placeholder">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <p>Formación docente y calidad educativa en Ecuador</p>
+                    <span class="marcador">Marcador: Calidad</span>
+                </div>
+                <div class="image-info">
+                    <h3>Formación Docente</h3>
+                    <p>Programas de capacitación continua para docentes y evaluaciones de desempeño para mejorar la calidad educativa en todo el país.</p>
+                    <p><strong>Inversión:</strong> 4.3% del PIB en educación.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>Proyecto educativo: Análisis del sistema de educación en Ecuador <span class="bandera-ecuador"></span></p>
+        <p>Repositorio público: <a href="https://github.com/tuusuario/educacion-ecuador" target="_blank">https://github.com/tuusuario/educacion-ecuador</a></p>
+        <p style="margin-top: 15px; font-size: 0.9rem;"><i class="fas fa-info-circle"></i> Ministerio de Educación Ecuador | Datos actualizados 2024</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Fuentes: INEC, Ministerio de Educación, UNESCO</p>
+    </footer>
 </body>
 </html>
